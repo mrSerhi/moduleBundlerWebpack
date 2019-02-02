@@ -1,5 +1,5 @@
 {
-  "name": "moduleBundlerWebpack",
+  "name": "try-to-action-webpack",
   "version": "1.0.0",
   "description": "working with webpack",
   "main": "index.js",
@@ -11,6 +11,8 @@
     "webpack-cli": "^3.2.1"
   },
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "dev": "npm run webpack -- --mode development",
+    "prod": "npm run webpack -- --mode production"
   }
 }
