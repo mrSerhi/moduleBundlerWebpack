@@ -90,10 +90,23 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sayHi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sayHi */ \"./src/sayHi.js\");\n\n\nconsole.log(_sayHi__WEBPACK_IMPORTED_MODULE_0__[\"default\"].call(undefined, 'Serhii'));\nconsole.log(_sayHi__WEBPACK_IMPORTED_MODULE_0__[\"default\"].call(undefined, 'Andry'));\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/sayHi.js":
+/*!**********************!*\
+  !*** ./src/sayHi.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return sayHi; });\nfunction sayHi(name) {\n  return `Hello ${name} from sayHi.js`;\n}\n\n\n//# sourceURL=webpack:///./src/sayHi.js?");
 
 /***/ })
 
