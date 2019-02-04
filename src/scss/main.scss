@@ -1,35 +1,53 @@
-@mixin reset {
-  padding: 0;
-  margin: 0;
+$color: #fff !default;
+$bg-color: #e24d4d !default;
+$init-size: 1rem !default;
+
+@keyframes button {
+  from {
+    transform: scale(1) translateZ(0);
+  }
+  to {
+    transform: scale(1.2) translateZ(3rem);
+  }
 }
 
-@mixin change-bg-color($bg-color: "#fff", $color: "#111") {
-  background: $bg-color;
+button[type="button"] {
   color: $color;
-}
+  background-color: $bg-color;
+  font-size: $init-size;
 
-$color: #fff;
-$default-bg-color: #d40d0d;
-
-button[type='button'] {
-  background: $default-bg-color;
-  color: $color;
-  width: 5rem;
-  padding: .5rem 1rem;
-  font-size: 1rem;
-  font-weight: 400;
+  &:hover,
+  &:active {
+    background-color: lighten($bg-color, 5%);
+    animation: button 3s linear 1 alternate;
+  }
 }
 
 * {
-  @include reset();
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 
   html {
+    min-height: 100%;
     height: 100%;
-    width: 100%;
-  }
 
-  body {
-    @include change-bg-color("#ccc");
+    body {
+      background-color: #cac4c4;
+      text-align: center;
+    }
+  }
+}
+
+h1 {
+  font-size: $init-size * 3;
+  color: lightcoral;
+  transition: 0.3s 0s linear;
+
+  &:hover {
+    color: darken(lightcoral, 5%);
+  }
+  &::selection {
+    background-color: orange;
   }
 }

@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackMd5Hash = require("webpack-md5-hash");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -11,10 +14,11 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "./js/[name].[chunkhash].js"
+    // filename: "./js/[name].[chunkhash].js"
+    filename: "./js/bundle.js"
   },
-  target: "node",
-  externals: [nodeExternals()],
+  // target: "node",
+  // externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -30,6 +34,7 @@ module.exports = {
           "style-loader",
           MiniCssExtractPlugin.loader,
           "css-loader",
+          "postcss-loader",
           "sass-loader"
         ]
       }
@@ -45,8 +50,19 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
       path: path.resolve(__dirname, "dist"),
-      filename: "./css/style.[contenthash].css"
-    }),
-    new WebpackMd5Hash()
-  ]
+      filename: "./css/main.css"
+    })
+    // new WebpackMd5Hash(),
+    // new CleanWebpackPlugin("./dist", {})
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
 };
