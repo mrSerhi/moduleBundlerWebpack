@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Webpack App</title>
-    <link href="./css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
   </head>
 
   <body>
     <h1>Hello Webpack</h1>
 
-    <script type="text/javascript" src="./js/bundle.js"></script>
-  </body>
+    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>  </body>
 </html>

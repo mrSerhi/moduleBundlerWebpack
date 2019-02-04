@@ -3,6 +3,7 @@ const nodeExternals = require("webpack-node-externals");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WebpackMd5Hash = require("webpack-md5-hash");
 
 module.exports = {
   entry: {
@@ -10,7 +11,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "./js/bundle.js"
+    filename: "./js/[name].[chunkhash].js"
   },
   target: "node",
   externals: [nodeExternals()],
@@ -44,7 +45,8 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
       path: path.resolve(__dirname, "dist"),
-      filename: "./css/main.css"
-    })
+      filename: "./css/style.[contenthash].css"
+    }),
+    new WebpackMd5Hash()
   ]
 };
