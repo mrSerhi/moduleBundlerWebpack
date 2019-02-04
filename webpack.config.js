@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "./js/[bundle].[chunkhash].js"
+    filename: "./js/bundle.js"
   },
   target: "node",
   externals: [nodeExternals()],
@@ -24,13 +24,23 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader"]
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./src/index.html",
+      inject: false,
+      hash: true
+    }),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
       path: path.resolve(__dirname, "dist"),

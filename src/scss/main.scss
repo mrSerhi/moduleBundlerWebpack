@@ -1,0 +1,23 @@
+@mixin reset {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin change-bg-color($bg-color: "#fff", $color: "#111") {
+  background: $bg-color;
+  color: $color;
+}
+
+* {
+  @include reset();
+  box-sizing: border-box;
+
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    @include change-bg-color("#ccc");
+  }
+}

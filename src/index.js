@@ -1,7 +1,9 @@
-import hi from "./sayHi";
-import { displayNames, trololo } from "./displayNames";
-import { button as btn, btnblock } from "./buttonView";
-import "./css/main.css";
+import hi from "./js/sayHi";
+import { displayNames, trololo } from "./js/displayNames";
+import { button as btn, btnblock } from "./js/buttonView";
+// import "./css/main.css";
+// styles
+import './scss/main.scss';
 
 console.log(hi.call(this, "Serhii"));
 console.log(hi.call(this, "Andry"));
